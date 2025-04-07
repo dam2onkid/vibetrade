@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import {
   BotMessageSquare,
@@ -9,20 +7,21 @@ import {
   FileText,
   Wallet,
 } from "lucide-react"
+import Link from "next/link"
 
-import { NavProjects } from "@/components/nav-projects"
-import { NavSecondary } from "@/components/nav-secondary"
-import { NavUser } from "@/components/nav-user"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { NavProjects } from "./nav-projects"
+import { NavSecondary } from "./nav-secondary"
+import { NavUser } from "./nav-user"
+import { ThemeToggle } from "@components/ui/theme-toggle"
 import {
-  Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+  Sidebar
+} from "@components/ui/sidebar"
 
 const data = {
   user: {
@@ -45,39 +44,37 @@ const data = {
   projects: [
     {
       name: "Chat",
-      url: "#",
+      url: "/chat",
       icon: BotMessageSquare,
     },
     {
       name: "Tokens",
-      url: "#",
+      url: "/tokens",
       icon: ChartCandlestick,
     },
     {
       name: "Wallet",
-      url: "#",
+      url: "/wallet",
       icon: Wallet,
     },
   ],
 }
 
-export function AppSidebar({
-  ...props
-}) {
+export function AppSidebar() {
   return (
-    <Sidebar variant="inset" {...props}>
+    <Sidebar variant="inset" className="border-r border-white/10 border-r-[1px]">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
+              <Link href="/" className="flex items-center gap-2 font-semibold">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <Command className="size-4" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">Vibetrade</span>
                 </div>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

@@ -1,0 +1,90 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# VibeTrade Project Structure
+## Overview
+VibeTrade is a Next.js application built with modern web technologies for AI agent trading on Sui blockchain.
+
+## Tech Stack
+- **Framework**: Next.js (App Router)
+- **Styling**: TailwindCSS
+- **UI Components**: shadcn/ui
+- **Theme**: Dark/Light mode with next-themes
+- **Icons**: Lucide React
+
+## Directory Structure
+```
+src/
+├── app/
+│   ├── layout.js        # Root layout with ThemeProvider
+│   └── page.js          # Home page
+├── components/
+│   ├── ui/              # shadcn/ui components
+│   │   ├── button.jsx
+│   │   ├── card.jsx
+│   │   ├── dialog.jsx
+│   │   ├── form.jsx
+│   │   ├── input.jsx
+│   │   ├── label.jsx
+│   │   └── sidebar.jsx
+│   ├── app-sidebar.jsx  # Main application sidebar
+│   ├── nav-projects.jsx # Projects navigation
+│   ├── nav-secondary.jsx # Secondary navigation
+│   ├── nav-user.jsx     # User navigation component
+│   └── theme-toggle.jsx # Theme switcher component
+```
+
+## Key Components
+
+### AppSidebar
+The main sidebar component that includes:
+- Logo/Brand header
+- Project navigation
+- Secondary navigation (Support, Docs)
+- Theme toggle
+- User profile section
+
+### Navigation Components
+- **NavProjects**: Handles project navigation (Chat, Tokens, Wallet)
+- **NavSecondary**: Secondary navigation items (Support, Docs)
+- **NavUser**: User profile section
+- **ThemeToggle**: Dark/Light mode switcher
+
+### Theme System
+- Uses `next-themes` for theme management
+- Supports light/dark modes
+- System theme detection
+- Smooth theme transitions
+
+## Styling
+- TailwindCSS for utility-first styling
+- Custom sidebar styling with shadcn/ui
+- Responsive design
+- Dark mode support with CSS variables
+
+## Data Structure
+```javascript
+{
+  user: {
+    name: string,
+    email: string,
+    avatar: string
+  },
+  projects: [
+    {
+      name: string,
+      url: string,
+      icon: Component
+    }
+  ],
+  navSecondary: [
+    {
+      title: string,
+      url: string,
+      icon: Component
+    }
+  ]
+}
+```

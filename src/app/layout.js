@@ -1,12 +1,14 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@components/ui/theme-provider";
+import { MainLayout } from "@components/layout/main-layout";
+import { SidebarProvider } from "@components/ui/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "VibeTrade",
-  description: "AI agent on Sui",
+  title: "Vibetrade",
+  description: "AI agent trading on Sui blockchain",
 };
 
 export default function RootLayout({ children }) {
@@ -19,7 +21,9 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <SidebarProvider>
+            <MainLayout>{children}</MainLayout>
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>
