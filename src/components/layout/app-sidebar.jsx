@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import {
   BotMessageSquare,
@@ -12,7 +14,6 @@ import Link from "next/link"
 import { NavProjects } from "./nav-projects"
 import { NavSecondary } from "./nav-secondary"
 import { NavUser } from "./nav-user"
-import { ThemeToggle } from "@components/ui/theme-toggle"
 import {
   SidebarContent,
   SidebarFooter,
@@ -83,7 +84,6 @@ export function AppSidebar() {
         <NavProjects projects={data.projects} />
         <div className="mt-auto space-y-2">
           <NavSecondary items={data.navSecondary} />
-          <ThemeToggle />
         </div>
       </SidebarContent>
       <SidebarFooter>
