@@ -1,11 +1,16 @@
-"use client";
+'use client';
+
+import { ThemeProvider } from "@components/ui/theme-provider";
+import { SidebarProvider } from "@components/ui/sidebar";
+import { WalletProvider } from "@suiet/wallet-kit";
+import "@suiet/wallet-kit/style.css";
 
 import { AppSidebar } from "@components/layout/app-sidebar";
-import { Sidebar } from "@components/ui/sidebar";
-import { SidebarTrigger } from "@components/ui/sidebar";
-import { Separator } from "@components/ui/separator";
+import { SiteHeader } from "@components/ui/site-header";
+import {
+  SidebarInset,
+} from "@/components/ui/sidebar"
 import { usePathname } from "next/navigation";
-
 export function MainLayout({ children }) {
   const pathname = usePathname();
   const pathSegments = pathname.split('/').filter(Boolean);
@@ -14,19 +19,21 @@ export function MainLayout({ children }) {
     : 'Home';
 
   return (
-    <div className="flex h-screen">
-      <AppSidebar />
-      <main className="flex-1 overflow-y-auto">
-        <header className="flex h-16 shrink-0 items-center gap-2">
-          <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
-            <Separator orientation="vertical" className="mr-2 data-[orientation=vertical]:h-4" />
-            <p>{currentTab}</p>
-          </div>
-        </header>
-
-        {children}
-      </main>
-    </div>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="dark"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <WalletProvider>
+        <SidebarProvider>
+          <AppSidebar />
+          <SidebarInset className="flex-1 overflow-y-auto">
+            <SiteHeader title={currentTab} />
+            {children}
+          </SidebarInset>
+        </SidebarProvider>
+      </WalletProvider>
+    </ThemeProvider>
   );
 }
