@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { ThemeProvider } from "@components/ui/theme-provider";
 import { SidebarProvider } from "@components/ui/sidebar";
 import { WalletProvider } from "@suiet/wallet-kit";
@@ -10,7 +11,9 @@ import { SiteHeader } from "@components/ui/site-header";
 import {
   SidebarInset,
 } from "@/components/ui/sidebar"
+import {  LoadingSpinner } from "@/components/ui/loading";
 import { usePathname } from "next/navigation";
+
 export function MainLayout({ children }) {
   const pathname = usePathname();
   const pathSegments = pathname.split('/').filter(Boolean);
@@ -30,7 +33,9 @@ export function MainLayout({ children }) {
           <AppSidebar />
           <SidebarInset className="flex-1 overflow-y-auto">
             <SiteHeader title={currentTab} />
-            {children}
+            <Suspense fallback={<LoadingSpinner />}>
+              {children}
+            </Suspense>
           </SidebarInset>
         </SidebarProvider>
       </WalletProvider>
