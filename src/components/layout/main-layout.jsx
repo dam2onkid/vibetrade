@@ -17,6 +17,7 @@ import "@mysten/dapp-kit/dist/index.css";
 // Config options for the networks you want to connect to
 const { networkConfig } = createNetworkConfig({
   localnet: { url: getFullnodeUrl("localnet") },
+  testnet: { url: getFullnodeUrl("testnet") },
   mainnet: { url: getFullnodeUrl("mainnet") },
 });
 const queryClient = new QueryClient();
@@ -27,22 +28,22 @@ import { SidebarInset } from "@/components/ui/sidebar";
 import { LoadingSpinner } from "@/components/ui/loading";
 import { usePathname } from "next/navigation";
 
-export function MainLayout({ children }) {
+export function ClientProviders({ children }) {
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="dark"
-      enableSystem
-      disableTransitionOnChange
-    >
-      <QueryClientProvider client={queryClient}>
-        <SuiClientProvider networks={networkConfig} defaultNetwork="localnet">
-          <WalletProvider>
+    <QueryClientProvider client={queryClient}>
+      <SuiClientProvider networks={networkConfig} defaultNetwork="testnet">
+        <WalletProvider autoConnect={true}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
             <App children={children} />
-          </WalletProvider>
-        </SuiClientProvider>
-      </QueryClientProvider>
-    </ThemeProvider>
+          </ThemeProvider>
+        </WalletProvider>
+      </SuiClientProvider>
+    </QueryClientProvider>
   );
 }
 
