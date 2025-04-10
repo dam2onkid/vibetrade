@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   SidebarGroup,
@@ -6,12 +6,30 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@components/ui/sidebar"
+} from "@components/ui/sidebar";
 
-export function NavProjects({
-  projects
-}) {
-  const { isMobile } = useSidebar()
+import { BotMessageSquare, ChartCandlestick, Wallet } from "lucide-react";
+
+const projects = [
+  {
+    name: "Chat",
+    url: "/chat",
+    icon: BotMessageSquare,
+  },
+  {
+    name: "Tokens",
+    url: "/tokens",
+    icon: ChartCandlestick,
+  },
+  {
+    name: "Wallet",
+    url: "/wallet",
+    icon: Wallet,
+  },
+];
+
+export function NavProjects() {
+  const { isMobile } = useSidebar();
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">

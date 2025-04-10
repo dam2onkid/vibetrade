@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 import {
   SidebarGroup,
@@ -6,12 +6,23 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@components/ui/sidebar"
+} from "@components/ui/sidebar";
+import { LifeBuoy, FileText } from "lucide-react";
 
-export function NavSecondary({
-  items,
-  ...props
-}) {
+const items = [
+  {
+    title: "Support",
+    url: "#",
+    icon: LifeBuoy,
+  },
+  {
+    title: "Docs",
+    url: "#",
+    icon: FileText,
+  },
+];
+
+export function NavSecondary({ ...props }) {
   return (
     <SidebarGroup {...props}>
       <SidebarGroupContent>

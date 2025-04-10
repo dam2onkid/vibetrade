@@ -1,16 +1,6 @@
-"use client";
-
 import * as React from "react";
-import {
-  BotMessageSquare,
-  ChartCandlestick,
-  Command,
-  LifeBuoy,
-  FileText,
-  Wallet,
-} from "lucide-react";
+import { Command } from "lucide-react";
 import Link from "next/link";
-import { ConnectButton } from "@mysten/dapp-kit";
 
 import { NavProjects } from "./nav-projects";
 import { NavSecondary } from "./nav-secondary";
@@ -24,38 +14,6 @@ import {
   SidebarMenuItem,
   Sidebar,
 } from "@components/ui/sidebar";
-
-const data = {
-  navSecondary: [
-    {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
-    },
-    {
-      title: "Docs",
-      url: "#",
-      icon: FileText,
-    },
-  ],
-  projects: [
-    {
-      name: "Chat",
-      url: "/chat",
-      icon: BotMessageSquare,
-    },
-    {
-      name: "Tokens",
-      url: "/tokens",
-      icon: ChartCandlestick,
-    },
-    {
-      name: "Wallet",
-      url: "/wallet",
-      icon: Wallet,
-    },
-  ],
-};
 
 export function AppSidebar() {
   return (
@@ -80,14 +38,13 @@ export function AppSidebar() {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavProjects projects={data.projects} />
+        <NavProjects />
         <div className="mt-auto space-y-2">
-          <NavSecondary items={data.navSecondary} />
+          <NavSecondary />
         </div>
       </SidebarContent>
       <SidebarFooter>
-        <ConnectButton />
-        {/* <NavUser user={data.user} /> */}
+        <NavUser />
       </SidebarFooter>
     </Sidebar>
   );

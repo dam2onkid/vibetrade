@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 
-export function OverviewTab() {
+export default function OverviewTab() {
   return (
     <div className="space-y-6">
       {/* Action buttons */}
@@ -48,6 +48,7 @@ export function OverviewTab() {
           </div>
         </Card>
       </div>
+
       {/* Balances and staking cards */}
       <div className="grid gap-4 md:grid-cols-2">
         <Card className="border-white/10">
@@ -104,32 +105,6 @@ export function OverviewTab() {
           </CardContent>
         </Card>
       </div>
-      {/* Chat with Agent Wallet */}
-      {/* <Card className="mt-8 border-white/10">
-        <CardHeader className="flex flex-row items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="flex items-center justify-center w-8 h-8 p-2 border rounded-md">
-              <Image
-                src="/icons/agent.svg"
-                alt="Agent"
-                width={20}
-                height={20}
-                className="text-primary"
-              />
-            </div>
-            <h3 className="text-lg font-medium">Chat with Agent Wallet</h3>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div className="p-4 mb-4 rounded-md bg-secondary/20">
-            <Input placeholder="Message Wallet" className="bg-background" />
-          </div>
-          <Button className="w-full bg-primary">
-            <Plus className="w-4 h-4 mr-2" />
-            Add Energy
-          </Button>
-        </CardContent>
-      </Card>{" "} */}
     </div>
   );
 }
